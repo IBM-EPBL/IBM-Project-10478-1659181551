@@ -1,0 +1,16 @@
+i)	Concatenate:
+a="Hi"
+b="Have a great day"
+c=a+"  "+b
+print("Concatenation of two string:")
+print(c)
+ 
+ii)	Reverse:
+#Reverse a string
+print("\nReversed String:")
+reversedString=c[::-1]
+print(reversedString)
+ 
+iii)	Slice:
+#Slice a string
+print("\nSliced String:"+c[26:41])
