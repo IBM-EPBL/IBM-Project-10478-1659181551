@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signupcss1.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title signup">
+                Signup Form
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="form-inner">
+                <form  method="POST">
+                    <div class="field">
+                        <input type="text" placeholder="UserName" name="UserName"required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" name="Email" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Phone Number" name="PhoneNumber" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" name="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Confirm password" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
