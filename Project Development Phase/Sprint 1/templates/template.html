@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../static/style/template.css">
+    <title>JobKanguru</title>
+    <link rel="shortcut icon" href="../static/images/kangaroo.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div id="nav-bar">
+        <nav  >
+            <div><img src="{{url_for('static',filename = 'images/logo.png')}}"></div>
+            <div id="links"><ul name="menu" id="menu">
+                <a href="#">Home</a>
+                <a href="#">Browse Job</a>
+                <a href="#">News Feeds</a>
+                <a href="#">About</a>
+                <a href="#">Post Job</a>
+                <a href="login" id="login">login</a>
+                <a href="signup" >signup</a>
+            </ul>
+            </div>
+        </nav>
+    </div>
+    {% block body %}{% endblock %}
+    <div></div>
+    <footer>
+        <center>
+            Copyright @ JobKanguru 2022
+        </center>
+    </footer>
+</body>
+</html>
+
