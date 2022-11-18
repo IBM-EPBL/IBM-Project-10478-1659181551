@@ -76,7 +76,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         sql="select * from user where email=? limit 1;"
-        conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+        conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
         stmt = ibm_db.prepare(conn, sql)
         ibm_db.bind_param(stmt,1,form.email.data)
         ibm_db.execute(stmt)
@@ -125,7 +125,7 @@ def save_picture(form_picture):
 def post_cvs(jobid):
     form = ApplicationForm()
     # sql="select * from job where id=? limit 1"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     # stmt = ibm_db.prepare(conn, sql)
     # ibm_db.bind_param(stmt,1,jobid)
     # ibm_db.execute(stmt)
@@ -168,7 +168,7 @@ def post_jobs():
     if form.validate_on_submit():
         print("after entered")
         sql="insert into job(title,industry,description,user_id,required_skill) values(?,?,?,?,?)"
-        conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+        conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
         stmt=ibm_db.prepare(conn,sql)
         ibm_db.bind_param(stmt,1,form.title.data)
         ibm_db.bind_param(stmt,2,form.industry.data)
@@ -197,7 +197,7 @@ def review():
     form = ReviewForm()
     if form.validate_on_submit():
         sql="insert into review(username,review) values(?,?)"
-        conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+        conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
         stmt=ibm_db.prepare(conn,sql)
         ibm_db.bind_param(stmt,1,form.username.data)
         ibm_db.bind_param(stmt,2,form.review.data)
@@ -214,7 +214,7 @@ def review():
 @login_required
 def posted_jobs():
     sql="select * from job where user_id=?"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     stmt=ibm_db.prepare(conn,sql)
     print(current_user)
     ibm_db.bind_param(stmt,1,current_user.id)
@@ -232,7 +232,7 @@ def posted_jobs():
 @login_required
 def show_applications(jobid):
     sql="select * from application where job_id=? order by degree,experience desc"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     stmt=ibm_db.prepare(conn,sql)
     ibm_db.bind_param(stmt,1,jobid)
     ibm_db.execute(stmt)
@@ -255,7 +255,7 @@ def meeting(application_id):
 @app.route("/show_jobs")
 def show_jobs():
     sql="select * from job"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     stmt=ibm_db.prepare(conn,sql)
     ibm_db.execute(stmt)
     job=ibm_db.fetch_both(stmt)
@@ -270,7 +270,7 @@ def show_jobs():
 @app.route("/resume/<id>", methods=['GET'])
 def resume(id):
     sql="select cv from application where id=?"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     stmt=ibm_db.prepare(conn,sql)
     ibm_db.bind_param(stmt,1,id)
     ibm_db.execute(stmt)
@@ -289,7 +289,7 @@ def updateprofile():
         form=ProfileUpdateForm()
         if form.validate_on_submit():
             sql="insert into jobseeker values(?,?,?,?,?,?,?)"
-            conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+            conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
             stmt=ibm_db.prepare(conn,sql)
             ibm_db.bind_param(stmt,1,current_user.id)
             ibm_db.bind_param(stmt,2,form.gender.data)
@@ -307,7 +307,7 @@ def updateprofile():
 @login_required
 def show_application():
     sql="select * from application inner join job on job.id=application.job_id where application.user_id=? order by date_applied desc"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     stmt=ibm_db.prepare(conn,sql)
     ibm_db.bind_param(stmt,1,current_user.id)
     ibm_db.execute(stmt)
@@ -323,7 +323,7 @@ def show_application():
 
 def integrateMail(title,description,skill):
     sql="select distinct(u.email) from jobseeker as j inner join user as u on j.id=u.id  where j.skill1=? or j.skill2=? or j.skill3=?;"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=IBM_ID;PWD=IBM_PWD;","","")
     stmt=ibm_db.prepare(conn,sql)
     ibm_db.bind_param(stmt,1,skill)
     ibm_db.bind_param(stmt,2,skill)
