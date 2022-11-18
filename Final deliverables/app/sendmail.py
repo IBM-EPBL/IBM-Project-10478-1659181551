@@ -1,7 +1,7 @@
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-key = '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'
+key = ''
 
 def sendMail(receiver,content):
     message = Mail(
