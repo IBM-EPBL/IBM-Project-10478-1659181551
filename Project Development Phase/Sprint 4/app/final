@@ -1,0 +1,40 @@
+create table user(
+    id int primary key generated always as identity(start with 1 increment by 1),
+    username VARCHAR(20) NOT null unique,
+    usertype varchar(20) not null,
+    email varchar(120) not null unique,
+    password varchar(60) not null
+);
+
+
+create table job(
+    id int primary key generated always as identity(start with 1 increment by 1),
+    title varchar(100) not null,
+    industry varchar(50) not null,
+    description varchar(200) not null,
+    date_posted DATE not null,
+    user_id int ,
+    Foreign Key (user_id) REFERENCES user(id)
+);
+
+
+create table application(
+    id int PRIMARY KEY generated always as identity(start with 1 increment by 1),
+    gender varchar(20) not null,
+    date_posted date not null,
+    degree varchar(50) not null,
+    industry varchar(50) not null,
+    experience varchar(50) not null,
+    cv varchar(50) not null,
+    cover_letter varchar(100) not null,
+    user_id int not null,
+    job_id int not null,
+    Foreign Key (job_id) REFERENCES job(id),
+    Foreign Key (user_id) REFERENCES user(id)
+);
+create table review(
+    id int PRIMARY KEY generated always as identity(start with 1 increment by 1),
+    username varchar(20) not null unique,
+    review varchar(120) not null
+
+);
