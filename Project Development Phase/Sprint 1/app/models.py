@@ -5,7 +5,7 @@ import ibm_db
 @login_manager.user_loader
 def load_user(user_id):
     sql="select * from user where id=? limit 1;"
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fbc81880;PWD=v4TioNbfWbm9MZP7;","","")
+    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=1bbf73c5-d84a-4bb0-85b9-ab1a4348f4a4.c3n41cmd0nqnrk39u98g.databases.appdomain.cloud;PORT=32286;PROTOCOL=TCPIP;SECURITY=SSL;UID=fIBM_UID;PWD=IBM_PID;","","")
     stmt = ibm_db.prepare(conn, sql)
     ibm_db.bind_param(stmt,1,user_id)
     ibm_db.execute(stmt)
